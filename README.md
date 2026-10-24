@@ -128,13 +128,6 @@ Invoke-RestMethod `
 npm test
 ```
 
-## Convenções de versão e commits
-
-- Escreva as mensagens dos commits em português, de forma curta e descritiva, seguindo Conventional Commits: `<tipo>(escopo opcional): descrição`.
-- Tipos comuns: `feat` para funcionalidades, `fix` para correções, `docs` para documentação, `test` para testes, `refactor` para refatorações, `ci` para integração contínua e `chore` para manutenção.
-- Exemplos: `feat: adiciona endpoint de saúde`, `fix(whatsapp): aguarda sincronização antes de enviar` e `docs: documenta a configuração`.
-- Para mudanças incompatíveis, use `!` após o tipo ou escopo e explique a mudança no corpo ou no rodapé `BREAKING CHANGE:`.
-
 ## Licença
 
 Este projeto está sob a licença [MIT](./LICENSE).
