@@ -54,6 +54,6 @@ test('colors INFO and ERRO output in terminals unless NO_COLOR is set', () => {
   }
 
   assert.match(infoLines[0], /\u001b\[90m.*\u001b\[0m \u001b\[32mINFO\u001b\[0m API disponível\./);
-  assert.match(errorLines[0], /\u001b\[90m.*\u001b\[0m \u001b\[31mERRO Falha ao enviar notificação\.\u001b\[0m/);
+  assert.match(errorLines[0], /\u001b\[90m.*\u001b\[0m \u001b\[31mERRO\u001b\[0m Falha ao enviar notificação\./);
   assert.match(infoLines[1], /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2} INFO Sem cores\.$/);
 });
