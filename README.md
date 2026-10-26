@@ -128,6 +128,18 @@ Invoke-RestMethod `
 npm test
 ```
 
+## Releases
+
+Commits convencionais enviados para `main` geram um PR de release com a versão
+atualizada em `package.json`, `package-lock.json` e no changelog. Ao mesclar esse
+PR, o GitHub publica a release e cria a tag correspondente. O projeto não é
+publicado no npm.
+
+Para permitir que os PRs de release acionem os checks obrigatórios, configure
+um secret de repositório chamado `RELEASE_PLEASE_TOKEN`. Use um fine-grained
+personal access token limitado a este repositório, com permissões de leitura e
+escrita em **Contents**, **Issues** e **Pull requests**.
+
 ## Licença
 
 Este projeto está sob a licença [MIT](./LICENSE).
