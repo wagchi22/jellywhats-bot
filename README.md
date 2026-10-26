@@ -130,15 +130,18 @@ npm test
 
 ## Releases
 
-Commits convencionais enviados para `main` geram um PR de release com a versão
-atualizada em `package.json`, `package-lock.json` e no changelog. Ao mesclar esse
-PR, o GitHub publica a release e cria a tag correspondente. O projeto não é
-publicado no npm.
+Commits convencionais enviados para `main` geram uma release e uma tag no
+GitHub. O plugin `@semantic-release/npm` atualiza `package.json` e
+`package-lock.json` sem publicar o pacote; `@semantic-release/git` commita essas
+versões na `main`.
 
-Para permitir que os PRs de release acionem os checks obrigatórios, configure
-um secret de repositório chamado `RELEASE_PLEASE_TOKEN`. Use um fine-grained
-personal access token limitado a este repositório, com permissões de leitura e
-escrita em **Contents**, **Issues** e **Pull requests**.
+O ruleset exige PR para alterações normais e permite bypass ao usuário
+mantenedor autenticado pelo workflow de release.
+
+Configure o secret `SEMANTIC_RELEASE_TOKEN` com um fine-grained personal access
+token do mantenedor, limitado a este repositório e com permissão de leitura e
+escrita em **Contents**. Esse token é usado apenas para enviar o commit de
+versão; a publicação da release no GitHub usa `GITHUB_TOKEN`.
 
 ## Licença
 

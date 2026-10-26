@@ -56,21 +56,27 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      issues: write
-      pull-requests: write
 
     steps:
-    - name: Require release automation token
+    - name: Require semantic-release token
       env:
-        RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+        SEMANTIC_RELEASE_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
       run: |
-        if [ -z "$RELEASE_PLEASE_TOKEN" ]; then
-          echo "::error::Configure the RELEASE_PLEASE_TOKEN repository secret to enable release PRs."
+        if [ -z "$SEMANTIC_RELEASE_TOKEN" ]; then
+          echo "::error::Configure the SEMANTIC_RELEASE_TOKEN repository secret before enabling release commits."
           exit 1
         fi
-    - name: Create or update release PR
-      uses: googleapis/release-please-action@v4
+    - uses: actions/checkout@v7
       with:
-        token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
-        release-type: node
-        target-branch: main
+        fetch-depth: 0
+        token: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+    - name: Use Node.js 24
+      uses: actions/setup-node@v7
+      with:
+        node-version: 24
+        cache: 'npm'
+    - run: npm ci
+    - name: Publish GitHub release
+      run: npm run release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
