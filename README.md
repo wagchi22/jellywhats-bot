@@ -128,6 +128,21 @@ Invoke-RestMethod `
 npm test
 ```
 
+## Releases
+
+Commits convencionais enviados para `main` geram uma release e uma tag no
+GitHub. O plugin `@semantic-release/npm` atualiza `package.json` e
+`package-lock.json` sem publicar o pacote; `@semantic-release/git` commita essas
+versões na `main`.
+
+O ruleset exige PR para alterações normais e permite bypass ao usuário
+mantenedor autenticado pelo workflow de release.
+
+Configure o secret `SEMANTIC_RELEASE_TOKEN` com um fine-grained personal access
+token do mantenedor, limitado a este repositório e com permissão de leitura e
+escrita em **Contents**. Esse token é usado apenas para enviar o commit de
+versão; a publicação da release no GitHub usa `GITHUB_TOKEN`.
+
 ## Licença
 
 Este projeto está sob a licença [MIT](./LICENSE).
