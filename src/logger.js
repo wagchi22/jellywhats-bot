@@ -7,11 +7,10 @@ function log(level, ...messages) {
   const stream = level === 'ERRO' ? process.stderr : process.stdout;
   const useColors = stream.isTTY && process.env.NO_COLOR === undefined;
   const timestampText = useColors ? `\u001b[90m${timestamp}\u001b[0m` : timestamp;
-  const status = level === 'ERRO' ? `${level} ${normalizedMessage}` : level;
   const statusText = useColors
-    ? `\u001b[${level === 'ERRO' ? '31' : '32'}m${status}\u001b[0m`
-    : status;
-  const messageText = level === 'ERRO' ? '' : ` ${normalizedMessage}`;
+    ? `\u001b[${level === 'ERRO' ? '31' : '32'}m${level}\u001b[0m`
+    : level;
+  const messageText = ` ${normalizedMessage}`;
   const line = `${timestampText} ${statusText}${messageText}`;
 
   if (level === 'ERRO') {

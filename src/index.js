@@ -232,7 +232,7 @@ function createApp({
       recentEvents.set(dedupeKey, now + dedupeWindowMs);
     }
 
-    logInfo('Webhook recebido, enviando notificações...');
+    logInfo('Webhook recebido.');
     const deliveries = await Promise.allSettled(
       targetRecipients.map((number) => sendWhatsAppMessage(
         client,
