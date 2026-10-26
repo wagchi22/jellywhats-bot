@@ -40,7 +40,18 @@
     ],
     "tagFormat": "v${version}",
     "plugins": [
-      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "releaseRules": [
+            {
+              "type": "chore",
+              "subject": "version releases without npm publishing (#10)",
+              "release": false
+            }
+          ]
+        }
+      ],
       "@semantic-release/release-notes-generator",
       [
         "@semantic-release/npm",
