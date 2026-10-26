@@ -12,7 +12,7 @@ Bot simples para receber notificações do Jellyfin e enviá-las para números d
 
 ## Requisitos
 
-- Node.js 18.19+
+- Node.js 24+
 - Chromium/Puppeteer compatível
 - Jellyfin com o plugin `Webhook`
 
